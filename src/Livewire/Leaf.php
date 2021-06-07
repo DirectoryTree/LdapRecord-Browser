@@ -44,18 +44,27 @@ class Leaf extends Component
     public $expandable = false;
 
     /**
+     * The connection name.
+     *
+     * @var string
+     */
+    public $connection;
+
+    /**
      * Mount the component.
      *
      * @param LdapEntry $entry
+     * @param string $connection
      *
      * @return void
      */
-    public function mount(LdapEntry $entry)
+    public function mount(LdapEntry $entry, $connection)
     {
         $this->dn = $entry->getDn();
         $this->name = $entry->getName();
         $this->type = (new TypeResolver($entry->objectclass ?? []))->get();
-        $this->expandable = $this->type === TypeResolver::TYPE_CONTAINER;
+        $this->expandable = $this->type === TypeResolver::CONTAINER;
+        $this->connection = $connection;
     }
 
     /**

@@ -27,6 +27,6 @@
     </div>
 
     @if($expanded)
-    <livewire:ldap.tree :nested="true" :base="$dn" :wire:key="$dn" />
+    <livewire:ldap.tree :connection="$connection" :base="$dn" :nested="true" :wire:key="$dn" />
     @endif
 </li>

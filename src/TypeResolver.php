@@ -4,11 +4,11 @@ namespace LdapRecord\Browser;
 
 class TypeResolver
 {
-    const TYPE_USER = 'user';
-    const TYPE_GROUP = 'group';
-    const TYPE_DOMAIN = 'domain';
-    const TYPE_COMPUTER = 'computer';
-    const TYPE_CONTAINER = 'container';
+    const USER = 'user';
+    const GROUP = 'group';
+    const DOMAIN = 'domain';
+    const COMPUTER = 'computer';
+    const CONTAINER = 'container';
 
     /**
      * The LDAP entry's object classes.
@@ -23,19 +23,19 @@ class TypeResolver
      * @var array
      */
     protected $map = [
-        'user'                  => self::TYPE_USER,
-        'inetorgperson'         => self::TYPE_USER,
-        'group'                 => self::TYPE_GROUP,
-        'groupofnames'          => self::TYPE_GROUP,
-        'groupofentries'        => self::TYPE_GROUP,
-        'groupofuniquenames'    => self::TYPE_GROUP,
-        'domain'                => self::TYPE_DOMAIN,
-        'computer'              => self::TYPE_COMPUTER,
-        'locality'              => self::TYPE_CONTAINER,
-        'container'             => self::TYPE_CONTAINER,
-        'lostandfound'          => self::TYPE_CONTAINER,
-        'organizationalunit'    => self::TYPE_CONTAINER,
-        'msds-quotacontainer'   => self::TYPE_CONTAINER,
+        'user'                  => self::USER,
+        'inetorgperson'         => self::USER,
+        'group'                 => self::GROUP,
+        'groupofnames'          => self::GROUP,
+        'groupofentries'        => self::GROUP,
+        'groupofuniquenames'    => self::GROUP,
+        'domain'                => self::DOMAIN,
+        'computer'              => self::COMPUTER,
+        'locality'              => self::CONTAINER,
+        'container'             => self::CONTAINER,
+        'lostandfound'          => self::CONTAINER,
+        'organizationalunit'    => self::CONTAINER,
+        'msds-quotacontainer'   => self::CONTAINER,
     ];
 
     /**

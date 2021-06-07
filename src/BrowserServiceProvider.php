@@ -23,6 +23,14 @@ class BrowserServiceProvider extends ServiceProvider
             $this->registerLivewireComponent('tree', Tree::class);
             $this->registerLivewireComponent('viewer', Viewer::class);
         });
+
+        Browser::models([
+            'user' => \LdapRecord\Models\ActiveDirectory\User::class,
+            'group' => \LdapRecord\Models\ActiveDirectory\Group::class,
+            'default' => \LdapRecord\Models\ActiveDirectory\Entry::class,
+            'computer' => \LdapRecord\Models\ActiveDirectory\Computer::class,
+            'container' => \LdapRecord\Models\ActiveDirectory\Container::class,
+        ]);
     }
 
     /**

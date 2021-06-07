@@ -2,8 +2,8 @@
 
 namespace LdapRecord\Browser\Livewire;
 
+use LdapRecord\Browser\Browser;
 use Livewire\Component;
-use LdapRecord\Models\Entry;
 
 class Tree extends Component
 {
@@ -17,22 +17,31 @@ class Tree extends Component
     /**
      * Whether the tree is nested.
      *
-     * @var bool
+     * @var string
      */
-    public $nested = false;
+    public $nested;
+
+    /**
+     * The connection name.
+     *
+     * @var string
+     */
+    public $connection;
 
     /**
      * Mount the component.
      *
-     * @param string $base
-     * @param bool $nested
+     * @param string|null $base
+     * @param bool|false $nested
+     * @param string|null $connection
      *
      * @return void
      */
-    public function mount($base = null, $nested = false)
+    public function mount($base = null, $nested = false, $connection = null)
     {
         $this->base = $base;
         $this->nested = $nested;
+        $this->connection = $connection;
     }
 
     /**
@@ -42,7 +51,7 @@ class Tree extends Component
      */
     public function render()
     {
-        $query = Entry::query()->listing();
+        $query = Browser::model($this->connection)->listing();
 
         if ($this->base) {
             $query->in($this->base);
