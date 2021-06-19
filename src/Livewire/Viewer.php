@@ -3,7 +3,8 @@
 namespace LdapRecord\Browser\Livewire;
 
 use Livewire\Component;
-use LdapRecord\Models\ActiveDirectory\Entry;
+use LdapRecord\Browser\Browser;
+use LdapRecord\Browser\ModelType;
 
 class Viewer extends Component
 {
@@ -13,6 +14,13 @@ class Viewer extends Component
      * @var \LdapRecord\Models\Model
      */
     protected $entry;
+
+    /**
+     * The LDAP entry's type.
+     *
+     * @var string|null
+     */
+    protected $type;
 
     /**
      * The events to listen for.
@@ -30,7 +38,8 @@ class Viewer extends Component
      */
     public function selected($dn)
     {
-        $this->entry = Entry::findOrFail($dn);
+        $this->entry = Browser::model(Browser::connection())->findOrFail($dn);
+        $this->type = ModelType::resolve($this->entry);
     }
 
     /**
@@ -40,6 +49,9 @@ class Viewer extends Component
      */
     public function render()
     {
-        return view('ldap::livewire.viewer', ['entry' => $this->entry]);
+        return view('ldap::livewire.viewer', [
+            'entry' => $this->entry,
+            'type' => $this->type,
+        ]);
     }
 }

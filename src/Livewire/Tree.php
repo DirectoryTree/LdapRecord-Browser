@@ -22,26 +22,17 @@ class Tree extends Component
     public $nested;
 
     /**
-     * The connection name.
-     *
-     * @var string
-     */
-    public $connection;
-
-    /**
      * Mount the component.
      *
      * @param string|null $base
-     * @param bool|false $nested
-     * @param string|null $connection
+     * @param bool|false  $nested
      *
      * @return void
      */
-    public function mount($base = null, $nested = false, $connection = null)
+    public function mount($base = null, $nested = false)
     {
         $this->base = $base;
         $this->nested = $nested;
-        $this->connection = $connection;
     }
 
     /**
@@ -51,7 +42,7 @@ class Tree extends Component
      */
     public function render()
     {
-        $query = Browser::model($this->connection)->listing();
+        $query = Browser::model(Browser::connection())->listing();
 
         if ($this->base) {
             $query->in($this->base);

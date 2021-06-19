@@ -7,25 +7,6 @@ use Livewire\Component;
 class Browse extends Component
 {
     /**
-     * The connection name.
-     *
-     * @var string
-     */
-    public $connection;
-
-    /**
-     * Mount the component.
-     *
-     * @param string $connection
-     *
-     * @return void
-     */
-    public function mount($connection)
-    {
-        $this->connection = $connection;
-    }
-
-    /**
      * Render the component.
      *
      * @return \Illuminate\Contracts\View\View

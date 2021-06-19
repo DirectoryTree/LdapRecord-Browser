@@ -2,7 +2,10 @@
     @if($entry)
     <div class="border rounded-lg bg-white shadow-sm">
         <div class="flex flex-col border-b p-4">
-            <div>{{ $entry->getName() }}</div>
+            <div class="flex items-center">
+                <x-ldap::entry.type :type="$type" />
+                <span class="ml-1">{{ $entry->getName() }}</span>
+            </div>
             <div class="text-sm font-medium text-gray-400">{{ $entry->getDn() }}</div>
         </div>
 
@@ -14,9 +17,9 @@
                         {{ $attribute }}
                     </dt>
 
-                    <dd class="mt-1 text-sm text-gray-900 overflow-auto">
+                    <dd class="overflow-auto rounded-lg text-sm bg-gray-100 text-gray-900 mt-1 p-2">
                         @foreach ($values as $value)
-                        {{ $value }}
+                        <code class="bg">{{ $value }}{{ $loop->last ? null : ',' }}</code>
                         @endforeach
                     </dd>
                 </div>

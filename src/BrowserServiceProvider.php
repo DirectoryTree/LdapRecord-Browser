@@ -3,6 +3,7 @@
 namespace LdapRecord\Browser;
 
 use Livewire\Livewire;
+use Illuminate\Support\Str;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\View\Compilers\BladeCompiler;
 use LdapRecord\Browser\Livewire\Leaf;
@@ -31,6 +32,12 @@ class BrowserServiceProvider extends ServiceProvider
             'computer' => \LdapRecord\Models\ActiveDirectory\Computer::class,
             'container' => \LdapRecord\Models\ActiveDirectory\Container::class,
         ]);
+
+        Browser::resolveConnectionWith(function () {
+            return request()->route('connection', function () {
+                return Str::afterLast(request()->headers->get('referer'), '/');
+            });
+        });
     }
 
     /**

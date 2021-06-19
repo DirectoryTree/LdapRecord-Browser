@@ -2,7 +2,9 @@
 
 namespace LdapRecord\Browser;
 
-class TypeResolver
+use LdapRecord\Models\Model;
+
+class ModelType
 {
     const USER = 'user';
     const GROUP = 'group';
@@ -11,18 +13,11 @@ class TypeResolver
     const CONTAINER = 'container';
 
     /**
-     * The LDAP entry's object classes.
-     *
-     * @var array
-     */
-    protected $classes = [];
-
-    /**
      * The objectclass type map.
      *
      * @var array
      */
-    protected $map = [
+    protected static $map = [
         'user'                  => self::USER,
         'inetorgperson'         => self::USER,
         'group'                 => self::GROUP,
@@ -39,27 +34,19 @@ class TypeResolver
     ];
 
     /**
-     * Constructor.
-     *
-     * @param array $classes
-     */
-    public function __construct(array $classes = [])
-    {
-        $this->classes = array_reverse(
-            array_map('strtolower', $classes)
-        );
-    }
-
-    /**
-     * Determine the LDAP objects type.
+     * Attempt resolving the LDAP models type.
      *
      * @return string|null
      */
-    public function get()
+    public static function resolve(Model $model)
     {
-        foreach ($this->classes as $class) {
-            if (array_key_exists($class, $this->map)) {
-                return $this->map[$class];
+        $classes = array_reverse(
+            array_map('strtolower', $model->getObjectClasses())
+        );
+
+        foreach ($classes as $class) {
+            if (array_key_exists($class, static::$map)) {
+                return static::$map[$class];
             }
         }
     }

@@ -3,7 +3,7 @@
 namespace LdapRecord\Browser\Livewire;
 
 use Livewire\Component;
-use LdapRecord\Browser\TypeResolver;
+use LdapRecord\Browser\ModelType;
 use LdapRecord\Models\Entry as LdapEntry;
 
 class Leaf extends Component
@@ -44,27 +44,18 @@ class Leaf extends Component
     public $expandable = false;
 
     /**
-     * The connection name.
-     *
-     * @var string
-     */
-    public $connection;
-
-    /**
      * Mount the component.
      *
      * @param LdapEntry $entry
-     * @param string $connection
      *
      * @return void
      */
-    public function mount(LdapEntry $entry, $connection)
+    public function mount(LdapEntry $entry)
     {
         $this->dn = $entry->getDn();
         $this->name = $entry->getName();
-        $this->type = (new TypeResolver($entry->objectclass ?? []))->get();
-        $this->expandable = $this->type === TypeResolver::CONTAINER;
-        $this->connection = $connection;
+        $this->type = ModelType::resolve($entry);
+        $this->expandable = $this->type === ModelType::CONTAINER;
     }
 
     /**

@@ -2,6 +2,7 @@
 
 namespace LdapRecord\Browser;
 
+use Closure;
 use LdapRecord\Container;
 use Illuminate\Support\Facades\Route;
 use LdapRecord\Browser\Livewire\Browse;
@@ -17,6 +18,13 @@ class Browser
     public static $models = [
         'default' => [],
     ];
+
+    /**
+     * The connection resolver.
+     *
+     * @var Closure
+     */
+    protected static $connectionResolver;
 
     /**
      * Register the browser routes.
@@ -59,6 +67,16 @@ class Browser
             static::use($model, $type, $connection);
         }
     }
+    
+    /**
+     * Fetch the currently browsed LDAP connection.
+     *
+     * @return string
+     */
+    public static function connection()
+    {
+        return value(static::$connectionResolver);
+    }
 
     /**
      * Fetch the model to use for the connection.
@@ -71,5 +89,17 @@ class Browser
     public static function model($connection, $type = 'default')
     {
         return new static::$models[$connection][$type];
+    }
+
+    /**
+     * Set the callback to use for resolving the current LDAP connection.
+     *
+     * @param Closure $callback
+     *
+     * @return void
+     */
+    public static function resolveConnectionWith(Closure $callback)
+    {
+        static::$connectionResolver = $callback;
     }
 }
