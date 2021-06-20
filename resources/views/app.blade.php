@@ -12,9 +12,10 @@
 
     <!-- Styles -->
     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
-
-    <!-- Scripts -->
     @livewireStyles
+
+    <!-- Alpine -->
+    <script src="//unpkg.com/alpinejs" defer></script>
 </head>
 
 <body class="antialiased min-h-screen bg-gray-100 dark:bg-gray-900 py-4 px-4">

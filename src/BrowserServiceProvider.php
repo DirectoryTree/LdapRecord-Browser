@@ -8,6 +8,7 @@ use Illuminate\Support\ServiceProvider;
 use Illuminate\View\Compilers\BladeCompiler;
 use LdapRecord\Browser\Livewire\Leaf;
 use LdapRecord\Browser\Livewire\Tree;
+use LdapRecord\Browser\Livewire\Search;
 use LdapRecord\Browser\Livewire\Viewer;
 
 class BrowserServiceProvider extends ServiceProvider
@@ -23,6 +24,7 @@ class BrowserServiceProvider extends ServiceProvider
             $this->registerLivewireComponent('leaf', Leaf::class);
             $this->registerLivewireComponent('tree', Tree::class);
             $this->registerLivewireComponent('viewer', Viewer::class);
+            $this->registerLivewireComponent('search', Search::class);
         });
 
         Browser::models([
