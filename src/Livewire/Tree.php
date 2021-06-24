@@ -42,7 +42,7 @@ class Tree extends Component
      */
     public function render()
     {
-        $query = Browser::model(Browser::connection())->listing();
+        $query = Browser::model()->listing();
 
         if ($this->base) {
             $query->in($this->base);

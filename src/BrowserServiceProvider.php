@@ -2,14 +2,12 @@
 
 namespace LdapRecord\Browser;
 
+use Illuminate\Http\Request;
+use Illuminate\Routing\UrlGenerator;
 use Livewire\Livewire;
 use Illuminate\Support\Str;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\View\Compilers\BladeCompiler;
-use LdapRecord\Browser\Livewire\Leaf;
-use LdapRecord\Browser\Livewire\Tree;
-use LdapRecord\Browser\Livewire\Search;
-use LdapRecord\Browser\Livewire\Viewer;
 
 class BrowserServiceProvider extends ServiceProvider
 {
@@ -21,10 +19,12 @@ class BrowserServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->afterResolving(BladeCompiler::class, function () {
-            $this->registerLivewireComponent('leaf', Leaf::class);
-            $this->registerLivewireComponent('tree', Tree::class);
-            $this->registerLivewireComponent('viewer', Viewer::class);
-            $this->registerLivewireComponent('search', Search::class);
+            $this->registerLivewireComponent('leaf', \LdapRecord\Browser\Livewire\Leaf::class);
+            $this->registerLivewireComponent('tree', \LdapRecord\Browser\Livewire\Tree::class);
+            $this->registerLivewireComponent('flash', \LdapRecord\Browser\Livewire\Flash::class);
+            $this->registerLivewireComponent('viewer', \LdapRecord\Browser\Livewire\Viewer::class);
+            $this->registerLivewireComponent('search', \LdapRecord\Browser\Livewire\Search::class);
+            $this->registerLivewireComponent('actions', \LdapRecord\Browser\Livewire\Actions::class);
         });
 
         Browser::models([
@@ -37,7 +37,11 @@ class BrowserServiceProvider extends ServiceProvider
 
         Browser::resolveConnectionWith(function () {
             return request()->route('connection', function () {
-                return Str::afterLast(request()->headers->get('referer'), '/');
+                $route = app('router')->getRoutes()->match(
+                    Request::create(request()->headers->get('referer'))
+                );
+                
+                return optional($route)->parameter('connection');
             });
         });
     }

@@ -3,6 +3,7 @@
 namespace LdapRecord\Browser;
 
 use Closure;
+use ErrorException;
 use LdapRecord\Container;
 use Illuminate\Support\Facades\Route;
 use LdapRecord\Browser\Livewire\Browse;
@@ -35,6 +36,7 @@ class Browser
     {
         Route::get('/', Connections::class)->name('ldap::connections');
         Route::get('/{connection}', Browse::class)->name('ldap::browse');
+        Route::get('/{connection}/{guid}', Browse::class)->name('ldap::show');
     }
 
     /**
@@ -81,13 +83,20 @@ class Browser
     /**
      * Fetch the model to use for the connection.
      *
-     * @param string $connection
      * @param string $type
+     *
+     * @throws ErrorException
      *
      * @return \LdapRecord\Models\Model
      */
-    public static function model($connection, $type = 'default')
+    public static function model($type = 'default')
     {
+        $connection = static::connection();
+
+        if (! isset(static::$models[$connection][$type])) {
+            throw new ErrorException("No [$type] model defined for connection [$connection]");
+        }
+        
         return new static::$models[$connection][$type];
     }
 

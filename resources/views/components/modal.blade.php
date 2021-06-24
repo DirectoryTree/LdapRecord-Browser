@@ -43,20 +43,18 @@ $maxWidth = [
         <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
     </div>
 
-    <div x-show="show"
-        class="mb-6 bg-white rounded-lg shadow-xl transform transition-all sm:w-full {{ $maxWidth }} sm:mx-auto"
+    <div x-show="show" class="transform transition-all sm:w-full {{ $maxWidth }} sm:mx-auto relative"
         x-transition:enter="ease-out duration-300"
         x-transition:enter-start="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
         x-transition:enter-end="opacity-100 translate-y-0 sm:scale-100" x-transition:leave="ease-in duration-200"
         x-transition:leave-start="opacity-100 translate-y-0 sm:scale-100"
         x-transition:leave-end="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95">
-        <x-ldap::button class="absolute right-0 -mt-3 -mr-3" x-on:click="show = false">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24"
-                stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-            </svg>
-        </x-ldap::button>
+        <x-ldap::tiny-button class="absolute right-0 -mt-3 -mr-3" x-on:click="show = false">
+            <x-ldap::icons.close />
+        </x-ldap::tiny-button>
 
-        {{ $slot }}
+        <div class="mb-6 bg-white shadow-xl rounded-lg">
+            {{ $slot }}
+        </div>
     </div>
 </div>

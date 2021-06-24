@@ -2,19 +2,7 @@
     @if($entry)
     <div class="border rounded-lg bg-white shadow-sm relative">
         <div class="absolute right-0 -mt-3 -mr-3">
-            <x-ldap::dropdown>
-                <x-slot name="trigger">
-                    <x-ldap::button>
-                        <x-ldap::icons.options />
-                    </x-ldap::button>
-                </x-slot>
-
-                <x-slot name="content">
-                    <x-ldap::dropdown-link href="#">Rename</x-ldap::dropdown-link>
-                    <hr />
-                    <x-ldap::dropdown-link href="#">Delete</x-ldap::dropdown-link>
-                </x-slot>
-            </x-ldap::dropdown>
+            <livewire:ldap.actions :entry="$entry" :key="$entry->getConvertedGuid()" />
         </div>
 
         <div class="flex flex-col border-b p-4">
@@ -22,6 +10,7 @@
                 <x-ldap::entry.type :type="$type" />
                 <span class="ml-1">{{ $entry->getName() }}</span>
             </div>
+
             <div class="text-sm font-medium text-gray-400">{{ $entry->getDn() }}</div>
         </div>
 

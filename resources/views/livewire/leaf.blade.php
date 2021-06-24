@@ -6,11 +6,11 @@
             <div class="ml-2">{{ $name }}</div>
         </div>
 
-        <x-ldap::button wire:click="$emit('selected', '{{ $dn }}')" class="absolute right-0 mr-2 p-1">
+        <x-ldap::tiny-button wire:click="$emit('selected', '{{ $guid }}')" class="absolute right-0 mr-2 p-1">
             <x-ldap::icons.view />
-        </x-ldap::button>
+        </x-ldap::tiny-button>
 
-        <x-ldap::button wire:click="toggle" wire:loading.attr="disabled" :disabled="!$expandable"
+        <x-ldap::tiny-button wire:click="toggle" wire:loading.attr="disabled" :disabled="!$expandable"
             class="absolute left-0 -ml-3">
             <div wire:loading.delay>
                 <x-ldap::icons.spinner />
@@ -23,10 +23,10 @@
                 <x-ldap::icons.expand />
                 @endif
             </div>
-        </x-ldap::button>
+        </x-ldap::tiny-button>
     </div>
 
     @if($expanded)
-    <livewire:ldap.tree :base="$dn" :nested="true" :wire:key="$dn" />
+    <livewire:ldap.tree :base="$dn" :nested="true" :wire:key="$guid" />
     @endif
 </li>

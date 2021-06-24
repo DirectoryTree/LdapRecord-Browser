@@ -32,7 +32,7 @@ class Search extends Component
             return false;
         }
 
-        return Browser::model(Browser::connection())
+        return Browser::model()
             ->whereContains('cn', $this->term)
             ->limit(20)
             ->get();
