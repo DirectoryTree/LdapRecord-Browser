@@ -22,6 +22,13 @@ class Search extends Component
     public $term = '';
     
     /**
+     * The event listeners.
+     *
+     * @var array
+     */
+    protected $listeners = ['selected' => 'dismiss'];
+
+    /**
      * The computed search results property.
      *
      * @return bool|\LdapRecord\Models\Collection
@@ -36,6 +43,16 @@ class Search extends Component
             ->whereContains('cn', $this->term)
             ->limit(20)
             ->get();
+    }
+
+    /**
+     * Dismiss the search modal.
+     *
+     * @return void
+     */
+    public function dismiss()
+    {
+        $this->searching = false;
     }
 
     /**
