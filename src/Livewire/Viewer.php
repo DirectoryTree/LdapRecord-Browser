@@ -3,24 +3,10 @@
 namespace LdapRecord\Browser\Livewire;
 
 use Livewire\Component;
-use LdapRecord\Browser\Browser;
-use LdapRecord\Browser\ModelType;
 
 class Viewer extends Component
 {
-    /**
-     * The guid of the model being viewed.
-     *
-     * @var string|null
-     */
-    public $guid;
-
-    /**
-     * The LDAP entry.
-     *
-     * @var \LdapRecord\Models\Model
-     */
-    protected $entry;
+    use ViewsModel;
 
     /**
      * The LDAP entry's type.
@@ -34,7 +20,7 @@ class Viewer extends Component
      *
      * @var array
      */
-    protected $listeners = ['selected', 'changed', 'deleted'];
+    protected $listeners = ['model.selected' => 'selected'];
 
     /**
      * The query string
@@ -46,20 +32,6 @@ class Viewer extends Component
     ];
 
     /**
-     * Mount the component.
-     *
-     * @param string $guid
-     *
-     * @return void
-     */
-    public function mount()
-    {
-        if ($this->guid) {
-            $this->load($this->guid);
-        }
-    }
-
-    /**
      * Load the selected entry.
      *
      * @param string $guid
@@ -68,39 +40,7 @@ class Viewer extends Component
      */
     public function selected($guid)
     {
-        $this->load($guid);
-    }
-
-    public function changed($guid)
-    {
-        if ($this->guid === $guid) {
-            $this->load($guid);
-        }
-    }
-
-    public function deleted($guid)
-    {
-        if ($this->guid === $guid) {
-            $this->guid = null;
-            $this->type = null;
-            $this->entry = null;
-        }
-    }
-
-    /**
-     * Load the model by its guid.
-     *
-     * @param string $guid
-     *
-     * @return void
-     */
-    protected function load($guid)
-    {
-        $this->entry = Browser::model()->findByGuidOrFail($guid);
-
-        $this->type = ModelType::resolve($this->entry);
-
-        $this->guid = $this->entry->getConvertedGuid();
+        $this->guid = $guid;
     }
 
     /**
@@ -110,9 +50,6 @@ class Viewer extends Component
      */
     public function render()
     {
-        return view('ldap::livewire.viewer', [
-            'entry' => $this->entry,
-            'type' => $this->type,
-        ]);
+        return view('ldap::livewire.viewer');
     }
 }

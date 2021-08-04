@@ -7,24 +7,15 @@
         </x-slot>
 
         <x-slot name="content">
-            <x-ldap::dropdown-link wire:click.prevent="$set('renaming', true)" href="#">Rename</x-ldap::dropdown-link>
+            <x-ldap::dropdown-link wire:click.prevent="$emit('model.renaming', '{{ $guid }}')" href="#">
+                Rename
+            </x-ldap::dropdown-link>
+
             <hr />
-            <x-ldap::dropdown-link href="#">Delete</x-ldap::dropdown-link>
+
+            <x-ldap::dropdown-link wire:click.prevent="$emit('model.deleting', '{{ $guid }}')" href="#">
+                Delete
+            </x-ldap::dropdown-link>
         </x-slot>
     </x-ldap::dropdown>
-
-    <x-ldap::dialog-modal wire:model="renaming">
-        <form method="post" wire:submit.prevent="rename">
-            <x-slot name="title">Rename {{ ucfirst($type) }}</x-slot>
-
-            <x-slot name="content">
-                <x-ldap::label>Name</x-ldap::label>
-                <x-ldap::input name="name" wire:model="name" />
-            </x-slot>
-
-            <x-slot name="footer">
-                <x-ldap::button type="submit" wire:click="rename">Save</x-ldap::button>
-            </x-slot>
-        </form>
-    </x-ldap::dialog-modal>
 </div>

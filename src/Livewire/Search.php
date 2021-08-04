@@ -26,7 +26,7 @@ class Search extends Component
      *
      * @var array
      */
-    protected $listeners = ['selected' => 'dismiss'];
+    protected $listeners = ['model.selected' => 'dismiss'];
 
     /**
      * The computed search results property.

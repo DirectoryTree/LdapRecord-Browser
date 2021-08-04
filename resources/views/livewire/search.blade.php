@@ -12,8 +12,13 @@
 
     <x-ldap::modal wire:model="searching">
         <div class="p-4">
-            <x-ldap::input autofocus type="search" placeholder="Type to search..." class="w-full"
-                wire:model.debounce.500ms="term" />
+            <x-ldap::input
+                autofocus 
+                type="search"
+                class="w-full"
+                placeholder="Type to search..." 
+                wire:model.debounce.500ms="term"
+            />
         </div>
 
         @if($this->results)
@@ -26,7 +31,7 @@
         @else
         <x-ldap::tree :nested="false">
             @foreach($this->results as $entry)
-            <livewire:ldap.leaf :entry="$entry" :wire:key="$entry->getConvertedGuid()" />
+            <livewire:ldap.leaf :guid="$entry->getConvertedGuid()" :wire:key="$entry->getConvertedGuid()" />
             @endforeach
         </x-ldap::tree>
         @endif

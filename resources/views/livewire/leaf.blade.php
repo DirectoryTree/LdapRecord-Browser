@@ -1,12 +1,13 @@
+@if($guid)
 <li class="relative flex flex-col px-4">
     <div class="flex items-center justify-between py-4">
         <div class="flex items-center mx-2">
-            <x-ldap::entry.type :type="$type" />
+            <x-ldap::entry.type :type="$this->type" />
 
-            <div class="ml-2">{{ $name }}</div>
+            <div class="ml-2">{{ $this->model->getName() }}</div>
         </div>
 
-        <x-ldap::tiny-button wire:click="$emit('selected', '{{ $guid }}')" class="absolute right-0 mr-2 p-1">
+        <x-ldap::tiny-button wire:click="$emit('model.selected', '{{ $guid }}')" class="absolute right-0 mr-2 p-1">
             <x-ldap::icons.view />
         </x-ldap::tiny-button>
 
@@ -27,6 +28,7 @@
     </div>
 
     @if($expanded)
-    <livewire:ldap.tree :base="$dn" :nested="true" :wire:key="$guid" />
+    <livewire:ldap.tree :base="$this->model->getDn()" :nested="true" :wire:key="$guid" />
     @endif
 </li>
+@endif

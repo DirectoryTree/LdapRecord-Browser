@@ -42,12 +42,15 @@ class Tree extends Component
      */
     public function render()
     {
-        $query = Browser::model()->listing();
+        $query = tap($model = Browser::model())->listing()->select(
+            //$model->getObjectGuid()
+            'objectguid'
+        );
 
         if ($this->base) {
             $query->in($this->base);
         }
-        
+
         return view('ldap::livewire.tree', ['entries' => $query->get()]);
     }
 }

@@ -2,40 +2,12 @@
 
 namespace LdapRecord\Browser\Livewire;
 
-use LdapRecord\Browser\Browser;
 use Livewire\Component;
 use LdapRecord\Browser\ModelType;
-use LdapRecord\Models\Entry as LdapEntry;
 
 class Leaf extends Component
 {
-    /**
-     * The entry's DN.
-     *
-     * @var string
-     */
-    public $dn;
-
-    /**
-     * The entry's name.
-     *
-     * @var string
-     */
-    public $name;
-
-    /**
-     * The entry's GUID.
-     *
-     * @var string
-     */
-    public $guid;
-
-    /**
-     * The entry's type.
-     *
-     * @var string
-     */
-    public $type;
+    use ViewsModel;
 
     /**
      * Whether the entry is expanded.
@@ -51,21 +23,17 @@ class Leaf extends Component
      */
     public $expandable = false;
 
-    protected $listeners = ['changed'];
-
     /**
      * Mount the component.
      *
-     * @param LdapEntry $entry
+     * @param string $guid
      *
      * @return void
      */
-    public function mount(LdapEntry $entry)
+    public function mount($guid)
     {
-        $this->dn = $entry->getDn();
-        $this->name = $entry->getName();
-        $this->guid = $entry->getConvertedGuid();
-        $this->type = ModelType::resolve($entry);
+        $this->guid = $guid;
+
         $this->expandable = $this->type === ModelType::CONTAINER;
 
         $this->expanded = session($this->guid, false);
@@ -81,15 +49,6 @@ class Leaf extends Component
         $this->expanded = ! $this->expanded;
 
         session([$this->guid => $this->expanded]);
-    }
-
-    public function changed($guid)
-    {
-        if ($guid === $this->guid) {
-            $this->mount(
-                Browser::model()->findByGuidOrFail($guid)
-            );
-        }
     }
 
     /**

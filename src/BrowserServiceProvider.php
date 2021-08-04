@@ -24,6 +24,8 @@ class BrowserServiceProvider extends ServiceProvider
             $this->registerLivewireComponent('flash', \LdapRecord\Browser\Livewire\Flash::class);
             $this->registerLivewireComponent('viewer', \LdapRecord\Browser\Livewire\Viewer::class);
             $this->registerLivewireComponent('search', \LdapRecord\Browser\Livewire\Search::class);
+            $this->registerLivewireComponent('rename', \LdapRecord\Browser\Livewire\Rename::class);
+            $this->registerLivewireComponent('delete', \LdapRecord\Browser\Livewire\Delete::class);
             $this->registerLivewireComponent('actions', \LdapRecord\Browser\Livewire\Actions::class);
         });
 
