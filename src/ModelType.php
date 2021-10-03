@@ -11,6 +11,8 @@ class ModelType
     const DOMAIN = 'domain';
     const COMPUTER = 'computer';
     const CONTAINER = 'container';
+    const UNKNOWN = 'unknown';
+    const DEFAULT = 'default';
 
     /**
      * The objectclass type map.

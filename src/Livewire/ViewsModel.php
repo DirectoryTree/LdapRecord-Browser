@@ -72,7 +72,7 @@ trait ViewsModel
      */
     public function getTypeProperty()
     {
-        return ModelType::resolve($this->model);
+        return ModelType::resolve($this->model) ?? ModelType::UNKNOWN;
     }
 
     /**
