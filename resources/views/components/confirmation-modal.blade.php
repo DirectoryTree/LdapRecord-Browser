@@ -12,18 +12,18 @@
             </div>
 
             <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
-                <h3 class="text-lg">
+                <h3 {{ $title->attributes->class('text-lg') }}>
                     {{ $title }}
                 </h3>
 
-                <div class="mt-2">
+                <div {{ $content->attributes->class('mt-2') }}>
                     {{ $content }}
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="px-6 py-4 bg-gray-100 text-right rounded-b-lg">
+    <div {{ $footer->attributes->class('px-6 py-4 bg-gray-100 text-right rounded-b-lg') }}>
         {{ $footer }}
     </div>
 </x-ldap::modal>
