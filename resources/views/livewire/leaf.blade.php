@@ -1,7 +1,7 @@
 @if($guid)
 <li class="relative flex flex-col px-4">
     <div class="flex items-center justify-between py-4">
-        <div class="flex items-center mx-2">
+        <div class="flex items-center mx-2 truncate">
             <x-ldap::entry.type :type="$this->type" />
 
             <div class="ml-2">{{ $this->model->getName() }}</div>
