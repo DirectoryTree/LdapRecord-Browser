@@ -8,7 +8,7 @@ use LdapRecord\Browser\ModelType;
 trait ViewsModel
 {
     /**
-     * The models guid.
+     * The currently viewing model's guid.
      *
      * @var string|null
      */
@@ -27,6 +27,13 @@ trait ViewsModel
         ]);
     }
 
+    /**
+     * Clear the guid when a model has been changed.
+     *
+     * @param string $guid
+     *
+     * @return void
+     */
     public function changed($guid)
     {
         if ($this->guid === $guid) {
@@ -36,6 +43,8 @@ trait ViewsModel
 
     /**
      * Clear the guid when a model has been deleted.
+     *
+     * @param string $guid
      *
      * @return void
      */
@@ -74,5 +83,17 @@ trait ViewsModel
     public function getNameProperty()
     {
         return $this->model->getName();
+    }
+
+    /**
+     * Get the sorted model's attributes.
+     *
+     * @return \Illuminate\Support\Collection
+     */
+    public function getAttributesProperty()
+    {
+        return collect($this->model->attributesToArray())->sortBy(function ($value, $attribute) {
+            return $attribute;
+        });
     }
 }
