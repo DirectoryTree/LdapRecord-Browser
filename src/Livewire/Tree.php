@@ -42,9 +42,8 @@ class Tree extends Component
      */
     public function render()
     {
-        $query = tap($model = Browser::model())->listing()->select(
-            //$model->getObjectGuid()
-            'objectguid'
+        $query = ($model = Browser::model())->listing()->select(
+            $model->getObjectGuidKey()
         );
 
         if ($this->base) {
