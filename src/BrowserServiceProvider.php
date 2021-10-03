@@ -2,10 +2,8 @@
 
 namespace LdapRecord\Browser;
 
-use Illuminate\Http\Request;
-use Illuminate\Routing\UrlGenerator;
 use Livewire\Livewire;
-use Illuminate\Support\Str;
+use Illuminate\Http\Request;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\View\Compilers\BladeCompiler;
 
@@ -22,6 +20,7 @@ class BrowserServiceProvider extends ServiceProvider
             $this->registerLivewireComponent('leaf', \LdapRecord\Browser\Livewire\Leaf::class);
             $this->registerLivewireComponent('tree', \LdapRecord\Browser\Livewire\Tree::class);
             $this->registerLivewireComponent('flash', \LdapRecord\Browser\Livewire\Flash::class);
+            $this->registerLivewireComponent('browse', \LdapRecord\Browser\Livewire\Browse::class);
             $this->registerLivewireComponent('viewer', \LdapRecord\Browser\Livewire\Viewer::class);
             $this->registerLivewireComponent('search', \LdapRecord\Browser\Livewire\Search::class);
             $this->registerLivewireComponent('rename', \LdapRecord\Browser\Livewire\Rename::class);
@@ -30,11 +29,12 @@ class BrowserServiceProvider extends ServiceProvider
         });
 
         Browser::models([
-            'user' => \LdapRecord\Models\ActiveDirectory\User::class,
-            'group' => \LdapRecord\Models\ActiveDirectory\Group::class,
-            'default' => \LdapRecord\Models\ActiveDirectory\Entry::class,
-            'computer' => \LdapRecord\Models\ActiveDirectory\Computer::class,
-            'container' => \LdapRecord\Models\ActiveDirectory\Container::class,
+            ModelType::USER => \LdapRecord\Models\ActiveDirectory\User::class,
+            ModelType::GROUP => \LdapRecord\Models\ActiveDirectory\Group::class,
+            ModelType::DEFAULT => \LdapRecord\Models\ActiveDirectory\Entry::class,
+            ModelType::UNKNOWN => \LdapRecord\Models\ActiveDirectory\Entry::class,
+            ModelType::COMPUTER => \LdapRecord\Models\ActiveDirectory\Computer::class,
+            ModelType::CONTAINER => \LdapRecord\Models\ActiveDirectory\Container::class,
         ]);
 
         Browser::resolveConnectionWith(function () {
