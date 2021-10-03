@@ -18,16 +18,24 @@
         </div>
 
         <div class="overflow-auto whitespace-nowrap">
-            <dl class="grid grid-cols-1 md:grid-cols-2">
-                @foreach ($this->model->attributesToArray() as $attribute => $values)
+            <dl class="grid grid-cols-1">
+                @foreach ($this->attributes as $attribute => $values)
                 <div class="mx p-4">
-                    <dt class="text-sm font-medium text-gray-500">
-                        {{ $attribute }}
+                    <dt class="text-sm font-medium text-gray-600">
+                        <a id="{{ $attribute }}" href="#{{ $attribute }}">{{ $attribute }}</a>
                     </dt>
 
-                    <dd class="overflow-auto rounded-lg text-sm bg-gray-100 text-gray-900 mt-1 p-2">
+                    <dd class="overflow-auto rounded-lg text-sm bg-gray-50 text-gray-900 mt-1 p-2 space-y-2">
                         @foreach ($values as $value)
-                        <code class="bg">{{ $value }}{{ $loop->last ? null : ',' }}</code>
+                        <div class="flex items-center gap">
+                            @if($this->isDn($value) && $value !== $this->model->getDn())
+                            <x-ldap::tiny-button wire:click="$emit('model.discover', '{{ $value }}')" class="mr-2 p-1">
+                                <x-ldap::icons.view />
+                            </x-ldap::tiny-button>
+                            @endif
+                            
+                            <code class="block">{{ $value }}</code>
+                        </div>
                         @endforeach
                     </dd>
                 </div>

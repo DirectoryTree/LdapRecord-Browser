@@ -3,13 +3,15 @@
 namespace LdapRecord\Browser\Livewire;
 
 use Livewire\Component;
+use LdapRecord\Browser\Browser;
+use LdapRecord\Models\Attributes\DistinguishedName;
 
 class Viewer extends Component
 {
     use ViewsModel;
 
     /**
-     * The LDAP entry's type.
+     * The LDAP model's type.
      *
      * @var string|null
      */
@@ -20,10 +22,13 @@ class Viewer extends Component
      *
      * @var array
      */
-    protected $listeners = ['model.selected' => 'selected'];
+    protected $listeners = [
+        'model.selected' => 'selected',
+        'model.discover' => 'discover'
+    ];
 
     /**
-     * The query string
+     * The query string watcher.
      *
      * @var array
      */
@@ -41,6 +46,32 @@ class Viewer extends Component
     public function selected($guid)
     {
         $this->guid = $guid;
+    }
+
+    /**
+     * Load a model by its discovered distinguished name.
+     *
+     * @param string $dn
+     *
+     * @return void
+     */
+    public function discover($dn)
+    {
+        $this->emit('model.selected', Browser::model()->findOrFail($dn)->getConvertedGuid());
+    }
+
+    /**
+     * Determine if the given value is a distinguished name.
+     *
+     * @param string $value
+     *
+     * @return bool
+     */
+    public function isDn($value)
+    {
+        $values = array_filter(DistinguishedName::make($value)->values());
+
+        return ! empty($values);
     }
 
     /**
