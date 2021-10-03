@@ -1,10 +1,14 @@
 <div>
     <form method="post" wire:submit.prevent="delete">
         <x-ldap::confirmation-modal wire:model="deleting">
-            <x-slot name="title">Delete {{ $deleting ? ucfirst($this->type) : null }}</x-slot>
+            <x-slot name="title">Delete <strong>{{ $deleting ? ucfirst($this->type) : null }}</strong> Object?</x-slot>
 
-            <x-slot name="content">
-                You cannot restore this object after deletion.
+            <x-slot name="content" class="space-y-4">
+                <p>Are you sure you want to delete:</p>
+
+                <p class="font-semibold">{{ $deleting ? $this->name : null }}</p>
+
+                <p>You cannot restore this object after deletion.</p>
             </x-slot>
 
             <x-slot name="footer">

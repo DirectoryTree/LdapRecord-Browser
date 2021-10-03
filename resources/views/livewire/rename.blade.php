@@ -1,7 +1,7 @@
 <div>
     <form method="post" wire:submit.prevent="rename">
         <x-ldap::dialog-modal wire:model="renaming">
-            <x-slot name="title">Rename {{ $renaming ? ucfirst($this->type) : null }}</x-slot>
+            <x-slot name="title">Rename {{ $renaming ? ucfirst($this->type) : null }} Object</x-slot>
 
             <x-slot name="content">
                 <x-ldap::label>Name</x-ldap::label>
