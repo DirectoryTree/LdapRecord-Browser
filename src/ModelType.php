@@ -19,7 +19,7 @@ class ModelType
      *
      * @var array
      */
-    protected static $map = [
+    protected static $types = [
         'user'                  => self::USER,
         'inetorgperson'         => self::USER,
         'group'                 => self::GROUP,
@@ -36,6 +36,19 @@ class ModelType
     ];
 
     /**
+     * Register a model type bound to an object class.
+     *
+     * @param string $objectClass
+     * @param string $type
+     * 
+     * @return void
+     */
+    public static function register($objectClass, $type)
+    {
+        static::$types[$objectClass] = $type;
+    }
+
+    /**
      * Attempt resolving the LDAP models type.
      *
      * @return string|null
@@ -46,10 +59,38 @@ class ModelType
             array_map('strtolower', $model->getObjectClasses())
         );
 
-        foreach ($classes as $class) {
-            if (array_key_exists($class, static::$map)) {
-                return static::$map[$class];
+        foreach ($classes as $objectClass) {
+            if (static::exists($objectClass)) {
+                return static::get($objectClass);
             }
         }
+
+        return static::UNKNOWN;
     }
+
+    /**
+     * Get the all or a specific type by object class.
+     *
+     * @return array|string|null
+     */
+    public static function get($objectClass = null)
+    {
+        if ($objectClass) {
+            return static::$types[$objectClass] ?? null;
+        }
+
+        return static::$types;
+    }
+
+    /**
+     * Determine if a model type exists with the given object class.
+     *
+     * @param string $objectClass
+     * 
+     * @return bool
+     */
+    public static function exists($objectClass)
+    {
+        return array_key_exists($objectClass, static::$types);
+    } 
 }

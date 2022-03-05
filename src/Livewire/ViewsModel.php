@@ -68,11 +68,11 @@ trait ViewsModel
     /**
      * Resolve the viewing models type.
      *
-     * @return string|null
+     * @return string
      */
     public function getTypeProperty()
     {
-        return ModelType::resolve($this->model) ?? ModelType::UNKNOWN;
+        return ModelType::resolve($this->model);
     }
 
     /**
