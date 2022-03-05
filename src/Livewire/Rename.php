@@ -61,9 +61,9 @@ class Rename extends Component
 
         $this->renaming = false;
 
-        $this->emit('model.changed', $this->model->getConvertedGuid());
+        $this->flash('success', 'Successfully renamed object');
 
-        $this->flash('success', 'Updated');
+        $this->emit('model.changed', $this->model->getConvertedGuid());
     }
 
     /**

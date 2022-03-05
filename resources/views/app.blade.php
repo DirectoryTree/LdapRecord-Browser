@@ -9,12 +9,12 @@
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
 
-        <!-- Styles -->
-        <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+        <!-- Styles -->        
         @livewireStyles
+        <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
 
-        <!-- Alpine -->
-        <script src="//unpkg.com/alpinejs" defer></script>
+        <!-- Scripts -->
+        <script src="https://unpkg.com/alpinejs" defer></script>
     </head>
 
     <body class="antialiased min-h-screen bg-gray-100 dark:bg-gray-900 py-4 px-4">

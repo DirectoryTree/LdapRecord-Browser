@@ -1,7 +1,7 @@
 <div>
     <label class="relative block p-2 border-b border-gray-200">
         <div class="absolute inset-y-0 left-0 flex items-center justify-center px-4 py-2 opacity-50">
-            <x-ldap::icons.close />
+            <x-ldap::icons.view />
         </div>
 
         <button wire:click="$set('searching', true)" type="button" tabindex="-1"
@@ -13,7 +13,7 @@
     <x-ldap::modal wire:model="searching">
         <div class="p-4">
             <x-ldap::input
-                autofocus 
+                autofocus
                 type="search"
                 class="w-full"
                 placeholder="Type to search..." 

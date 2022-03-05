@@ -1,8 +1,6 @@
 <div class="absolute inset-0">
     @php
-    $types = [
-    'success' => 'bg-green-600',
-    ];
+    $types = ['success' => 'bg-green-500'];
     @endphp
 
     @if($type && $message)

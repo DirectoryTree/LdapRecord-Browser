@@ -13,7 +13,7 @@
 
     @if($guid)
     <div class="w-full h-full lg:w-1/4 bg-white shadow rounded-lg relative">
-        <div class="text-center tracking-wide uppercase text-gray-600 text-sm border-b py-2">Jump to</div>
+        <div class="text-center tracking-wide uppercase text-gray-600 text-sm border-b py-2">Jump to attribute</div>
 
         <div class="p-4 space-y-1">
             @foreach($this->attributes->keys() as $attribute)

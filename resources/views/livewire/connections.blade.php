@@ -1,4 +1,4 @@
-<ul class="flex flex-col space-y-4 md:mx-auto max-w-sm">
+<ul class="flex flex-col space-y-4 mx-auto max-w-sm">
     @forelse($connections as $connection)
     <li
         class="relative flex bg-white shadow overflow-hidden rounded-md px-6 py-4 hover:border-gray-400 focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500"
