@@ -53,7 +53,7 @@ Visit your application at (if running `artisan serve`) [http://127.0.0.1:8000/ld
 You will see a list of connections you have configured:
 
 <p align="center">
-    <img src="https://github.com/directorytree/screenshots/blob/master/screenshots/connections.png" title="Browser connections view">
+    <img src="https://github.com/DirectoryTree/LdapRecord-Browser/blob/master/screenshots/connections.png" title="Browser connections view">
 </p>
 
 Click one of the connections and you will be taken to a view of
@@ -61,5 +61,5 @@ your entire directory, where you may search and view all
 objects visible by your configured user account:
 
 <p align="center">
-    <img src="https://github.com/directorytree/screenshots/blob/master/screenshots/browser.png" title="Browser object view">
+    <img src="https://github.com/DirectoryTree/LdapRecord-Browser/blob/master/screenshots/browser.png" title="Browser object view">
 </p>
