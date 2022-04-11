@@ -40,14 +40,6 @@ Route::prefix('/ldap')->group(function () {
 });
 ```
 
-This will register the below three (3) routes:
-
-```php
-Route::get('/', Connections::class)->name('ldap::connections');
-Route::get('/{connection}', Browse::class)->name('ldap::browse');
-Route::get('/{connection}/{guid}', Browse::class)->name('ldap::show');
-```
-
 Since Browser has an index route (`/`), it's recommended to wrap it inside of a group
 with a prefix so it does not collide with your applications root index page.
 
