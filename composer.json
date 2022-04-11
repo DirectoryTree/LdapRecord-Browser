@@ -50,5 +50,12 @@
         "psr-4": {
             "LdapRecord\\Browser\\Tests\\": "tests/"
         }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "LdapRecord\\Browser\\BrowserServiceProvider"
+            ]
+        }
     }
 }
