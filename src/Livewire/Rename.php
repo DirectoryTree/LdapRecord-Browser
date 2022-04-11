@@ -19,7 +19,7 @@ class Rename extends Component
     /**
      * Whether the renaming dialog is being shown.
      *
-     * @var boolean
+     * @var bool
      */
     public $renaming = false;
 

@@ -2,10 +2,10 @@
 
 namespace LdapRecord\Browser;
 
-use Livewire\Livewire;
 use Illuminate\Http\Request;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\View\Compilers\BladeCompiler;
+use Livewire\Livewire;
 
 class BrowserServiceProvider extends ServiceProvider
 {
@@ -42,7 +42,7 @@ class BrowserServiceProvider extends ServiceProvider
                 $route = app('router')->getRoutes()->match(
                     Request::create(request()->headers->get('referer'))
                 );
-                
+
                 return optional($route)->parameter('connection');
             });
         });

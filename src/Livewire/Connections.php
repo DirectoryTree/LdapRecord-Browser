@@ -2,8 +2,8 @@
 
 namespace LdapRecord\Browser\Livewire;
 
-use Livewire\Component;
 use LdapRecord\Container;
+use Livewire\Component;
 
 class Connections extends Component
 {
@@ -17,7 +17,7 @@ class Connections extends Component
         $container = Container::getInstance();
 
         return view('ldap::livewire.connections', [
-            'connections' => array_keys($container->all())
+            'connections' => array_keys($container->all()),
         ])->layout('ldap::app');
     }
 }

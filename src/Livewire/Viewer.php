@@ -2,9 +2,9 @@
 
 namespace LdapRecord\Browser\Livewire;
 
-use Livewire\Component;
 use LdapRecord\Browser\Browser;
 use LdapRecord\Models\Attributes\DistinguishedName;
+use Livewire\Component;
 
 class Viewer extends Component
 {
@@ -24,7 +24,7 @@ class Viewer extends Component
      */
     protected $listeners = [
         'model.selected' => 'selected',
-        'model.discover' => 'discover'
+        'model.discover' => 'discover',
     ];
 
     /**
@@ -33,7 +33,7 @@ class Viewer extends Component
      * @var array
      */
     protected $queryString = [
-        'guid'=> ['except'=> ''],
+        'guid' => ['except' => ''],
     ];
 
     /**

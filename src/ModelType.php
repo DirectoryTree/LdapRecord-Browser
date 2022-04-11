@@ -20,19 +20,19 @@ class ModelType
      * @var array
      */
     protected static $types = [
-        'user'                  => self::USER,
-        'inetorgperson'         => self::USER,
-        'group'                 => self::GROUP,
-        'groupofnames'          => self::GROUP,
-        'groupofentries'        => self::GROUP,
-        'groupofuniquenames'    => self::GROUP,
-        'domain'                => self::DOMAIN,
-        'computer'              => self::COMPUTER,
-        'locality'              => self::CONTAINER,
-        'container'             => self::CONTAINER,
-        'lostandfound'          => self::CONTAINER,
-        'organizationalunit'    => self::CONTAINER,
-        'msds-quotacontainer'   => self::CONTAINER,
+        'user' => self::USER,
+        'inetorgperson' => self::USER,
+        'group' => self::GROUP,
+        'groupofnames' => self::GROUP,
+        'groupofentries' => self::GROUP,
+        'groupofuniquenames' => self::GROUP,
+        'domain' => self::DOMAIN,
+        'computer' => self::COMPUTER,
+        'locality' => self::CONTAINER,
+        'container' => self::CONTAINER,
+        'lostandfound' => self::CONTAINER,
+        'organizationalunit' => self::CONTAINER,
+        'msds-quotacontainer' => self::CONTAINER,
     ];
 
     /**
@@ -40,7 +40,7 @@ class ModelType
      *
      * @param string $objectClass
      * @param string $type
-     * 
+     *
      * @return void
      */
     public static function register($objectClass, $type)
@@ -86,11 +86,11 @@ class ModelType
      * Determine if a model type exists with the given object class.
      *
      * @param string $objectClass
-     * 
+     *
      * @return bool
      */
     public static function exists($objectClass)
     {
         return array_key_exists($objectClass, static::$types);
-    } 
+    }
 }
