@@ -14,9 +14,9 @@ class Browse extends Component
      * @var array
      */
     protected $queryString = [
-        'guid'=> ['except'=> ''],
+        'guid' => ['except' => ''],
     ];
-    
+
     /**
      * The events to listen for.
      *
@@ -27,17 +27,16 @@ class Browse extends Component
     ];
 
     /**
-    * Load the selected entry.
-    *
-    * @param string $guid
-    *
-    * @return void
-    */
+     * Load the selected entry.
+     *
+     * @param string $guid
+     *
+     * @return void
+     */
     public function selected($guid)
     {
         $this->guid = $guid;
     }
-
 
     /**
      * Render the component.

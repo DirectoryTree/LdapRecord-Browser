@@ -4,10 +4,10 @@ namespace LdapRecord\Browser;
 
 use Closure;
 use ErrorException;
-use LdapRecord\Container;
 use Illuminate\Support\Facades\Route;
 use LdapRecord\Browser\Livewire\Browse;
 use LdapRecord\Browser\Livewire\Connections;
+use LdapRecord\Container;
 
 class Browser
 {
@@ -42,8 +42,8 @@ class Browser
     /**
      * Set the model to use for the given connection.
      *
-     * @param string $model
-     * @param string $type
+     * @param string      $model
+     * @param string      $type
      * @param string|null $on
      *
      * @return void
@@ -58,7 +58,7 @@ class Browser
     /**
      * Set the models to use.
      *
-     * @param array $models
+     * @param array       $models
      * @param string|null $connection
      *
      * @return void
@@ -69,7 +69,7 @@ class Browser
             static::use($model, $type, $connection);
         }
     }
-    
+
     /**
      * Fetch the currently browsed LDAP connection.
      *
@@ -85,9 +85,9 @@ class Browser
      *
      * @param string $type
      *
-     * @throws ErrorException
-     *
      * @return \LdapRecord\Models\Model
+     *
+     * @throws ErrorException
      */
     public static function model($type = 'default')
     {
@@ -96,7 +96,7 @@ class Browser
         if (! isset(static::$models[$connection][$type])) {
             throw new ErrorException("No [$type] model defined for connection [$connection]");
         }
-        
+
         return new static::$models[$connection][$type];
     }
 

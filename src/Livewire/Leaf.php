@@ -2,8 +2,8 @@
 
 namespace LdapRecord\Browser\Livewire;
 
-use Livewire\Component;
 use LdapRecord\Browser\ModelType;
+use Livewire\Component;
 
 class Leaf extends Component
 {
@@ -15,7 +15,7 @@ class Leaf extends Component
      * @var string
      */
     public $expanded = false;
-    
+
     /**
      * Whether the entry is expandable.
      *

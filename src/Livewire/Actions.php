@@ -20,7 +20,7 @@ class Actions extends Component
     {
         $this->guid = $guid;
     }
-    
+
     /**
      * Render the component.
      *

@@ -2,8 +2,8 @@
 
 namespace LdapRecord\Browser\Livewire;
 
-use Livewire\Component;
 use LdapRecord\Browser\Browser;
+use Livewire\Component;
 
 class Search extends Component
 {
@@ -20,7 +20,7 @@ class Search extends Component
      * @var string
      */
     public $term = '';
-    
+
     /**
      * The event listeners.
      *

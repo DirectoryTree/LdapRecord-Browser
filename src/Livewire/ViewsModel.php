@@ -23,7 +23,7 @@ trait ViewsModel
     {
         return array_merge($this->listeners, [
             'model.changed' => 'changed',
-            'model.deleted' => 'deleted'
+            'model.deleted' => 'deleted',
         ]);
     }
 
