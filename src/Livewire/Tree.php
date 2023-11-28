@@ -17,7 +17,7 @@ class Tree extends Component
     /**
      * Whether the tree is nested.
      *
-     * @var string
+     * @var bool
      */
     public $nested;
 
