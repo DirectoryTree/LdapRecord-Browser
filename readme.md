@@ -8,7 +8,6 @@
 
 <p align="center">
     <a href="https://laravel.com"><img src="https://img.shields.io/badge/Built_for-Laravel-green.svg?style=flat-square"></a>
-    <a href="https://scrutinizer-ci.com/g/directorytree/ldaprecord-browser"><img src="https://img.shields.io/scrutinizer/g/directorytree/ldaprecord-browser/master.svg?style=flat-square"></a>
     <a href="https://packagist.org/packages/directorytree/ldaprecord-browser"><img src="https://img.shields.io/packagist/dt/directorytree/ldaprecord-browser.svg?style=flat-square"></a>
     <a href="https://packagist.org/packages/directorytree/ldaprecord-browser"><img src="https://img.shields.io/packagist/v/directorytree/ldaprecord-browser.svg?style=flat-square"></a>
     <a href="https://packagist.org/packages/directorytree/ldaprecord-browser"><img src="https://img.shields.io/packagist/l/directorytree/ldaprecord-browser.svg?style=flat-square"></a>
