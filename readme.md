@@ -1,17 +1,26 @@
 <p align="center">
-    <img src="https://ldaprecord.com/logo.svg" width="400">
+    <img src="https://ldaprecord.com/logo.svg" width="300" alt="LdapRecord-Browser">
+</p>
+
+<p align="center">An LDAP browser for your Laravel application or development workflow.</p>
+
+<p align="center">
+    <a href="https://packagist.org/packages/directorytree/ldaprecord-browser"><img src="https://img.shields.io/packagist/dt/directorytree/ldaprecord-browser.svg?style=flat-square" alt="Total Downloads"></a>
+    <a href="https://packagist.org/packages/directorytree/ldaprecord-browser"><img src="https://img.shields.io/packagist/v/directorytree/ldaprecord-browser.svg?style=flat-square" alt="Latest Version"></a>
+    <a href="https://github.com/DirectoryTree/LdapRecord-Browser/blob/master/license.md"><img src="https://img.shields.io/github/license/DirectoryTree/LdapRecord-Browser?style=flat-square" alt="License"></a>
 </p>
 
 <p align="center">
-    An LDAP browser for your <strong>Laravel</strong> application or development workflow.
+    <a href="#requirements">Requirements</a>
+    <span> · </span>
+    <a href="#installation">Installation</a>
+    <span> · </span>
+    <a href="#usage">Usage</a>
+    <span> · </span>
+    <a href="#configuration">Configuration</a>
 </p>
 
-<p align="center">
-    <a href="https://laravel.com"><img src="https://img.shields.io/badge/Built_for-Laravel-green.svg?style=flat-square"></a>
-    <a href="https://packagist.org/packages/directorytree/ldaprecord-browser"><img src="https://img.shields.io/packagist/dt/directorytree/ldaprecord-browser.svg?style=flat-square"></a>
-    <a href="https://packagist.org/packages/directorytree/ldaprecord-browser"><img src="https://img.shields.io/packagist/v/directorytree/ldaprecord-browser.svg?style=flat-square"></a>
-    <a href="https://packagist.org/packages/directorytree/ldaprecord-browser"><img src="https://img.shields.io/packagist/l/directorytree/ldaprecord-browser.svg?style=flat-square"></a>
-</p>
+---
 
 ## Requirements
 
@@ -50,7 +59,7 @@ Visit your application at (if running `php artisan serve`) [http://127.0.0.1:800
 You will see a list of connections you have configured:
 
 <p align="center">
-    <img src="https://github.com/DirectoryTree/LdapRecord-Browser/blob/master/screenshots/connections.png" title="Browser connections view">
+    <img src="https://github.com/DirectoryTree/LdapRecord-Browser/blob/master/screenshots/connections.png" title="Browser connections view" alt="Configured LDAP connections in LdapRecord-Browser">
 </p>
 
 Click one of the connections and you will be taken to a view of
@@ -58,7 +67,7 @@ your entire directory, where you may search and view all
 objects visible by your configured user account:
 
 <p align="center">
-    <img src="https://github.com/DirectoryTree/LdapRecord-Browser/blob/master/screenshots/browser.png" title="Browser object view">
+    <img src="https://github.com/DirectoryTree/LdapRecord-Browser/blob/master/screenshots/browser.png" title="Browser object view" alt="LDAP directory objects in LdapRecord-Browser">
 </p>
 
 ## Configuration
