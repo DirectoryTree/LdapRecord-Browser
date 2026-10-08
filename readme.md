@@ -59,7 +59,7 @@ Visit your application at (if running `php artisan serve`) [http://127.0.0.1:800
 You will see a list of connections you have configured:
 
 <p align="center">
-    <img src="https://github.com/DirectoryTree/LdapRecord-Browser/blob/master/screenshots/connections.png" title="Browser connections view">
+    <img src="https://github.com/DirectoryTree/LdapRecord-Browser/blob/master/screenshots/connections.png" title="Browser connections view" alt="Configured LDAP connections in LdapRecord-Browser">
 </p>
 
 Click one of the connections and you will be taken to a view of
@@ -67,7 +67,7 @@ your entire directory, where you may search and view all
 objects visible by your configured user account:
 
 <p align="center">
-    <img src="https://github.com/DirectoryTree/LdapRecord-Browser/blob/master/screenshots/browser.png" title="Browser object view">
+    <img src="https://github.com/DirectoryTree/LdapRecord-Browser/blob/master/screenshots/browser.png" title="Browser object view" alt="LDAP directory objects in LdapRecord-Browser">
 </p>
 
 ## Configuration
